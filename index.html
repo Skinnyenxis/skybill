@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkyBill | Жарнама агенттігі</title>
+<meta name="description" content="SkyBill — рекламное производство полного цикла в Казахстане. Наружная реклама, широкоформатная печать, лазерная и фрезерная резка.">
+<meta name="keywords" content="наружная реклама, широкоформатная печать, виниловый баннер, плоттерная резка, фрезерная резка, лазерная резка, сублимационная печать, SkyBill, Казахстан">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+:root {
+    --primary-red: #E31E24;
+    --dark-blue: #0A192F;
+    --white: #fff;
+    --light-gray: #F8F9FA;
+    --accent-orange: #f39c12;
+}
+
+/* BASE */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #ffffff, #eaf2ff, #d6e4ff);
+    color: var(--dark-blue);
+    scroll-behavior: smooth;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* HEADER GLASS */
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--dark-blue);
+}
+.logo-text span { color: var(--primary-red); }
+
+/* NAV */
+.header-nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+.header-nav a {
+    text-decoration: none;
+    color: var(--dark-blue);
+    font-weight: 500;
+}
+.header-nav a:hover { color: var(--primary-red); }
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--dark-blue);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* BUTTONS */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: .3s;
+    border: none;
+    cursor: pointer;
+}
+.btn-red {
+    background: var(--primary-red);
+    color: #fff;
+}
+.btn-red:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(227, 30, 36, 0.4);
+}
+.btn-outline {
+    border: 2px solid #fff;
+    color: #fff;
+    background: transparent;
+}
+.btn-outline:hover {
+    background: #fff;
+    color: var(--dark-blue);
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(135deg, #0A192F, #1e3a8a);
+    color: white;
+    padding: 100px 0;
+}
+
+.hero-flex {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+/* SLIDER */
+.hero-slider {
+    flex: 1;
+}
+.slider {
+    height: 450px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: 1s;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* HERO TEXT */
+.hero-content { flex: 1; }
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+    opacity: .8;
+}
+.hero-btns {
+    display: flex;
+    gap: 15px;
+}
+
+/* SERVICES & GENERAL SECTIONS */
+.services, .portfolio, .calculator, .steps, .advantages, .contacts {
+    padding: 100px 0;
+}
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.service-card {
+    padding: 40px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: .4s;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.service-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-card .icon {
+    font-size: 2.5rem;
+    color: var(--primary-red);
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+/* PORTFOLIO TABS & GRID */
+.portfolio-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+.tab-btn {
+    padding: 10px 20px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.tab-btn.active, .tab-btn:hover {
+    background: var(--primary-red);
+    color: #fff;
+    border-color: var(--primary-red);
+}
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.portfolio-item {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: 0.4s;
+}
+.portfolio-item:hover {
+    transform: translateY(-5px);
+}
+.portfolio-img {
+    height: 240px;
+    background-size: cover;
+    background-position: center;
+}
+.portfolio-info {
+    padding: 20px;
+}
+.portfolio-info h4 { margin-bottom: 5px; font-size: 1.1rem; }
+.portfolio-info p { color: #666; font-size: 0.9rem; }
+
+/* DESIGN ALERT BOX */
+.design-pricing-alert {
+    background: #fff9f0;
+    border-left: 5px solid var(--accent-orange);
+    padding: 25px;
+    border-radius: 8px;
+    margin: 0 auto 30px auto;
+    max-width: 800px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+.design-pricing-alert h4 {
+    color: #b87300;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.design-pricing-alert ul {
+    list-style: none;
+    margin-bottom: 15px;
+}
+.design-pricing-alert li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+.design-pricing-alert li i {
+    color: var(--accent-orange);
+    margin-top: 4px;
+}
+.design-pricing-alert p {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    border-top: 1px solid #fde2b4;
+    padding-top: 10px;
+}
+
+/* INTERACTIVE CALCULATOR */
+.calculator { background: var(--light-gray); }
+.calc-wrapper {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+.calc-group { margin-bottom: 25px; }
+.calc-group label { display: block; margin-bottom: 10px; font-weight: 600; }
+.calc-select, .calc-range { 
+    width: 100%; 
+}
+.calc-select {
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #d9d9d9;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: #fff;
+}
+.calc-range { padding: 5px 0; border: none; }
+.calc-result {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px dashed #e0e0e0;
+}
+.calc-price { font-size: 2.2rem; font-weight: 700; color: var(--primary-red); margin-top: 10px; }
+.discount-note { color: #27ae60; font-size: 0.9rem; font-weight: 500; margin-top: 5px; display: block; height: 20px;}
+
+/* STEPS INFOGRAPHICS */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    position: relative;
+}
+.step-item {
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: .4s;
+}
+.step-item.show { opacity: 1; transform: translateY(0); }
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-red);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+}
+.step-item h4 { margin-bottom: 10px; }
+.step-item p { color: #666; font-size: 0.9rem; }
+
+/* ADVANTAGES */
+.advantages {
+    background: var(--dark-blue);
+    color: #fff;
+}
+.advantages h2 { text-align: center; margin-bottom: 5px; font-size: 2.5rem;}
+.advantages .section-subtitle { color: #aaa; }
+.adv-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.adv-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px 30px;
+    border-radius: 12px;
+    border-left: 5px solid var(--primary-red);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: .4s;
+}
+.adv-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.adv-item h4 { font-size: 1.3rem; margin-bottom: 10px; }
+.adv-item p { color: #ccc; font-size: 0.95rem; line-height: 1.5; }
+
+/* CONTACTS */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+.contact-card {
+    background: #fff;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: .4s;
+}
+.contact-card.show { opacity: 1; transform: translateY(0); }
+.contact-card h3 {
+    margin-bottom: 20px;
+}
+.contact-card p { margin-bottom: 10px; }
+.contact-card a { color: var(--dark-blue); text-decoration: none; font-weight: 500; }
+.contact-card a:hover { color: var(--primary-red); }
+.contact-input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    font-family: inherit;
+}
+.contact-form button {
+    width: 100%;
+}
+
+/* FOOTER */
+.site-footer {
+    background: #061020;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* RESPONSIVE */
+@media(max-width: 992px){
+    .header-flex { flex-wrap: wrap; justify-content: space-between; }
+    .menu-toggle { display: block; }
+    .header-nav { order: 3; width: 100%; display: none; justify-content: center; margin-top: 15px; }
+    .header-nav.show { display: flex; }
+    .header-nav ul { flex-direction: column; gap: 15px; align-items: center; }
+    .hero-flex { flex-direction: column; text-align: center; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    .services-grid, .portfolio-grid, .adv-grid, .steps-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .hero-slider, .slider { width: 100%; height: 300px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="main-header">
+<div class="container header-flex">
+    <a href="#" class="logo-text">Sky<span>Bill</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu"><i class="fas fa-bars"></i></button>
+
+    <nav class="header-nav" id="headerNav">
+        <ul>
+            <li><a href="#">Главная</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#portfolio">Портфолио</a></li>
+            <li><a href="#calc">Калькулятор</a></li>
+            <li><a href="#steps">Этапы</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+        </ul>
+    </nav>
+    <a href="#contacts" class="btn btn-red">Связаться</a>
+</div>
+</header>
+
+<main>
+
+<section class="hero">
+<div class="container hero-flex">
+    <div class="hero-slider">
+      <div class="slider">
+    <div class="slide active" style="background-image:url('img/company1.jpg')"></div>
+    <div class="slide" style="background-image:url('img/company2.jpg')"></div>
+</div>
+    </div>
+    <div class="hero-content">
+        <h1>Собственное производство рекламы в Шымкенте</h1>
+        <p>SkyBill — современное рекламное производство полного цикла. Жарнама агенттігі: от идеи и дизайн-макета до высокоточной резки и качественного монтажа.</p>
+        <div class="hero-btns">
+            <a href="#contacts" class="btn btn-red">Оставить заявку</a>
+            <a href="#calc" class="btn btn-outline">Расчет стоимости</a>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="services" class="services">
+<div class="container">
+    <h2 class="section-title">Наши услуги</h2>
+    <p class="section-subtitle">Полный спектр высокотехнологичной обработки материалов, широкоформатной печати и дизайна</p>
+
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="icon"><i class="fas fa-ad"></i></div>
+            <h3>Наружная реклама</h3>
+            <p>Изготовление вывесок, объемных световых букв, лайтбоксов и комплексное оформление фасадов «под ключ».</p>
+        </div>
+        <div class="service-card">
+            <div class="icon"><i class="fas fa-print"></i></div>
+            <h3>Широкоформатная печать</h3>
+            <p>Высококачественная печать на виниле, баннерах, холсте и яркая сублимационная печать на качественной флаговой ткани.</p>
+        </div>
+        <div class="service-card">
+            <div class="icon"><i class="fas fa-cut"></i></div>
+            <h3>Высокоточная резка и Дизайн</h3>
+            <p>Лазерная, фрезерная и плоттерная резка любых материалов, а также профессиональная разработка дизайн-макетов с нуля.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="portfolio" class="portfolio">
+<div class="container">
+    <h2 class="section-title">Наши работы</h2>
+    <p class="section-subtitle">Реализованные кейсы, которыми мы гордимся</p>
+    
+    <div class="portfolio-tabs">
+        <button class="tab-btn active" data-filter="all">Все проекты</button>
+        <button class="tab-btn" data-filter="outdoor">Конструкции и Вывески</button>
+        <button class="tab-btn" data-filter="print">Печать и Резка</button>
+    </div>
+
+    <div class="portfolio-grid">
+        <div class="portfolio-item" data-category="outdoor">
+            <div class="portfolio-img" style="background-image: url('https://picsum.photos/600/400?outdoor1')"></div>
+            <div class="portfolio-info">
+                <h4>Световые объемные буквы</h4>
+                <p>Наружная реклама</p>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="print">
+            <div class="portfolio-img" style="background-image: url('https://picsum.photos/600/400?print1')"></div>
+            <div class="portfolio-info">
+                <h4>Печать фирменных флагов</h4>
+                <p>Сублимационная печать</p>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="outdoor">
+            <div class="portfolio-img" style="background-image: url('https://picsum.photos/600/400?outdoor2')"></div>
+            <div class="portfolio-info">
+                <h4>Композитный короб для ТРЦ</h4>
+                <p>Фрезерная резка и сборка</p>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="print">
+            <div class="portfolio-img" style="background-image: url('https://picsum.photos/600/400?print2')"></div>
+            <div class="portfolio-info">
+                <h4>Брендирование витрин винилом</h4>
+                <p>Плоттерная резка пленки</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="calc" class="calculator">
+<div class="container">
+    <h2 class="section-title">Прайс-лист и онлайн-расчет</h2>
+    <p class="section-subtitle">Ознакомьтесь с ценами на дизайн и рассчитайте стоимость производственных услуг</p>
+    
+    <div class="design-pricing-alert">
+        <h4><i class="fas fa-palette"></i> Услуги графического дизайна</h4>
+        <ul>
+            <li><i class="fas fa-check-circle"></i> <strong>Базовая работа:</strong> от 1 000 до 3 000 тг (корректировка, простой макет, подготовка к печати).</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Крупные проекты:</strong> до 5 000 тг (сложные макеты, многослойная графика, большой объем).</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Создание с нуля:</strong> от 10 000 тг (разработка фирменного логотипа или индивидуальный дизайн меню).</li>
+        </ul>
+        <p>Точная стоимость работы дизайнера рассчитывается индивидуально в зависимости от сложности и объема вашего технического задания.</p>
+    </div>
+
+    <div class="calc-wrapper">
+        <div class="calc-group">
+            <label for="serviceType">Выберите тип производственной работы (Печать / Резка):</label>
+            <select id="serviceType" class="calc-select">
+                <option value="2500" data-discount="2000" data-unit="кв. м">Винил матовый/глянцевый (2 500 тг/м²)</option>
+                <option value="3500" data-discount="3000" data-unit="кв. м">Винил перфорированный (3 500 тг/м²)</option>
+                <option value="3500" data-discount="3000" data-unit="кв. м">Винил с черной подложкой (3 500 тг/м²)</option>
+                <option value="8000" data-discount="7500" data-unit="кв. м">Винил магнитный (8 000 тг/м²)</option>
+                <option value="5000" data-discount="4500" data-unit="кв. м">Винил светоотражающий (5 000 тг/м²)</option>
+                
+                <option value="2000" data-discount="1800" data-unit="кв. м">Баннер стандартный / матовый (2 000 тг/м²)</option>
+                <option value="5000" data-unit="кв. м">Бэклит с подложкой (5 000 тг/м²)</option>
+                <option value="3500" data-unit="кв. м">Бэклит светопропускающий (3 500 тг/м²)</option>
+                <option value="4500" data-unit="кв. м">Печать на холсте: Глянцевый (4 500 тг/м²)</option>
+                <option value="5000" data-unit="кв. м">Печать на холсте: Матовый (5 000 тг/м²)</option>
+                
+                <option value="10000" data-unit="кв. м">УФ-печать (Акрил, Ромарк, Холст, Фанера, Алюкабонд) (10 000 тг/м²)</option>
+                
+                <option value="6000" data-unit="кв. м">Сублимационная печать: Политекс сетка (6 000 тг/м²)</option>
+                <option value="8000" data-unit="кв. м">Сублимационная печать: Габардин / Атлас (8 000 тг/м²)</option>
+                <option value="7000" data-unit="кв. м">Сублимационная печать: Полиэстер (7 000 тг/м²)</option>
+                
+                <option value="4500" data-unit="кв. м">Плоттерная резка: Пленка Оракал (4 500 тг/м²)</option>
+                <option value="5000" data-unit="кв. м">Плоттерная резка: Матовая пленка (5 000 тг/м²)</option>
+                <option value="8000" data-unit="кв. м">Контурная резка винила (8 000 тг/м²)</option>
+                
+                <option value="10000" data-unit="кв. м">Фрезерная резка: ПВХ 5 мм (10 000 тг/м²)</option>
+                <option value="15000" data-unit="кв. м">Фрезерная резка: ПВХ 10 мм (15 000 тг/м²)</option>
+                <option value="14000" data-unit="кв. м">Фрезерная резка: Акрил 2 мм (14 000 тг/м²)</option>
+                <option value="13000" data-unit="кв. м">Фрезерная резка: Фанера 3 мм (13 000 тг/м²)</option>
+                <option value="16000" data-unit="кв. м">Фрезерная резка: Алюкабонд (16 000 тг/м²)</option>
+                
+                <option value="8000" data-unit="кв. м">Лазерная резка: Кожа (8 000 тг/м²)</option>
+                <option value="6000" data-unit="кв. м">Лазерная резка: Магнит (6 000 тг/м²)</option>
+                
+                <option value="1000" data-unit="проект">Работа дизайнера (от 1 000 тг)</option>
+            </select>
+        </div>
+        
+        <div class="calc-group">
+            <label id="rangeLabel" for="calcVolume">Количество / Площадь: 1 кв. м</label>
+            <input type="range" id="calcVolume" class="calc-range" min="1" max="100" value="1">
+            <span id="discountNote" class="discount-note"></span>
+        </div>
+
+        <div class="calc-result">
+            <h4>Ориентировочная стоимость:</h4>
+            <div class="calc-price"><span id="totalPrice">0</span> KZT</div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="steps" class="steps">
+<div class="container">
+    <h2 class="section-title">Этапы производства</h2>
+    <p class="section-subtitle">4 простых шага от точных замеров до готового изделия</p>
+    
+    <div class="steps-grid">
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h4>Замеры и ТЗ</h4>
+            <p>Уточняем размеры, подбираем оптимальные материалы и фиксируем требования.</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h4>Дизайн-макет</h4>
+            <p>Разрабатываем визуализацию проекта и подготавливаем файлы к производству.</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h4>Изготовление</h4>
+            <p>Запускаем печать, лазерную или фрезерную резку на собственном оборудовании.</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h4>Монтаж / Сдача</h4>
+            <p>Осуществляем бережную доставку готовой продукции и профессиональный монтаж.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="advantages">
+<div class="container">
+    <h2>Почему выбирают SkyBill</h2>
+    <p class="section-subtitle">Факты, гарантирующие качество выполнения вашего заказа</p>
+
+    <div class="adv-grid">
+        <div class="adv-item">
+            <h4>Собственное оборудование</h4>
+            <p>Станки для лазерной и фрезерной резки, плоттеры и сублимационные принтеры позволяют нам контролировать качество на каждом этапе.</p>
+        </div>
+        <div class="adv-item">
+            <h4>Любая сложность и габариты</h4>
+            <p>Работаем строго по вашим размерам на квадратный метр. Выполняем как штучные дизайнерские заказы, так и масштабные тиражи.</p>
+        </div>
+        <div class="adv-item">
+            <h4>Прозрачный расчёт</h4>
+            <p>Цена формируется на основе понятных тарифов за квадратный метр или единицу работы. Никаких скрытых наценок.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="contacts" class="contacts">
+<div class="container">
+    <h2 class="section-title">Контакты</h2>
+    <p class="section-subtitle">Оставьте сообщение, и наш мастер свяжется с вами в течение 15 минут</p>
+    <div class="contact-grid">
+        <div class="contact-card">
+            <h3>Свяжитесь с нами</h3>
+            <p><i class="fas fa-map-marker-alt" style="color: var(--primary-red); margin-right: 10px;"></i> Адрес: г. Шымкент, ул. Рысқұлбекова, 8/1</p>
+            <p><i class="fas fa-phone" style="color: var(--primary-red); margin-right: 10px;"></i> Телефон: <a href="tel:+77029112018">+7 (702) 911-20-18</a></p>
+            <p><i class="fas fa-envelope" style="color: var(--primary-red); margin-right: 10px;"></i> Email: <a href="mailto:skybill.kz@mail.ru">skybill.kz@mail.ru</a></p>
+        </div>
+        <div class="contact-card">
+            <form class="contact-form" id="feedbackForm">
+                <input type="text" placeholder="Ваше имя" class="contact-input" required />
+                <input type="email" placeholder="Email" class="contact-input" required />
+                <textarea rows="4" placeholder="Укажите необходимые размеры, тип материала (винил, баннер, акрил) или требуемую услугу" class="contact-input" required></textarea>
+                <button type="submit" class="btn btn-red">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="container">
+    <p>© 2026 SkyBill. Все права защищены. Разработано в рамках производственной практики.</p>
+</div>
+</footer>
+
+<script>
+// 1. HERO SLIDER
+let slides = document.querySelectorAll('.slide');
+let i = 0;
+setInterval(() => {
+    if(slides.length > 0) {
+        slides[i].classList.remove('active');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('active');
+    }
+}, 3000);
+
+
+// 2. INTERACTIVE CALCULATOR (С динамическим учетом оптовых скидок от 10 кв.м)
+const serviceType = document.getElementById('serviceType');
+const calcVolume = document.getElementById('calcVolume');
+const rangeLabel = document.getElementById('rangeLabel');
+const totalPrice = document.getElementById('totalPrice');
+const discountNote = document.getElementById('discountNote');
+
+function calculateCost() {
+    if(!serviceType || !calcVolume || !totalPrice) return;
+    
+    let basePrice = parseInt(serviceType.value);
+    let quantity = parseInt(calcVolume.value);
+    
+    // Получаем текущую единицу измерения и оптовую скидку из выбранного option
+    let selectedOption = serviceType.options[serviceType.selectedIndex];
+    let unitText = selectedOption.getAttribute('data-unit') || 'кв. м';
+    let discountPrice = selectedOption.getAttribute('data-discount');
+    
+    // Очищаем сообщение о скидке
+    discountNote.textContent = '';
+    
+    // Если объем от 10 кв.м включительно и у позиции предусмотрена скидка
+    if (discountPrice && quantity >= 10) {
+        basePrice = parseInt(discountPrice);
+        discountNote.textContent = 'Учтена оптовая скидка за объем от 10 кв.м!';
+    }
+    
+    // Динамически меняем текст подписи над ползунком
+    rangeLabel.textContent = `Объем / Площадь работы: ${quantity} ${unitText}`;
+    
+    let finalCost = basePrice * quantity;
+    totalPrice.textContent = finalCost.toLocaleString('ru-RU');
+}
+
+if(serviceType && calcVolume) {
+    serviceType.addEventListener('change', calculateCost);
+    calcVolume.addEventListener('input', calculateCost);
+    
+    // Первичный расчет при загрузке страницы
+    calculateCost();
+}
+
+
+// 3. PORTFOLIO TABS FILTER
+const tabBtns = document.querySelectorAll('.tab-btn');
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        let filterValue = btn.getAttribute('data-filter');
+        
+        portfolioItems.forEach(item => {
+            if(filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});
+
+
+// 4. SCROLL ANIMATION (INTERSECTION OBSERVER)
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if(e.isIntersecting){
+            e.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.service-card, .adv-item, .contact-card, .step-item')
+    .forEach(el => observer.observe(el));
+
+
+// 5. MOBILE BURGER MENU
+const menuToggle = document.getElementById('menuToggle');
+const headerNav = document.getElementById('headerNav');
+if(menuToggle && headerNav){
+    menuToggle.addEventListener('click', () => {
+        headerNav.classList.toggle('show');
+    });
+    
+    headerNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            headerNav.classList.remove('show');
+        });
+    });
+}
+
+// 6. FORM SUBMISSION VALIDATION
+const feedbackForm = document.getElementById('feedbackForm');
+if(feedbackForm) {
+    feedbackForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Спасибо! Ваша заявка успешно отправлена. Специалист SkyBill свяжется с вами в ближайшее время для согласования деталей.');
+        feedbackForm.reset();
+    });
+}
+</script>
+</body>
+</html>
