@@ -240,9 +240,13 @@ body {
     border-color: var(--primary-red);
 }
 .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    column-count: 3;
+    column-gap: 20px;
+}
+
+.portfolio-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
 }
 .portfolio-item {
     background: #fff;
@@ -255,9 +259,10 @@ body {
     transform: translateY(-5px);
 }
 .portfolio-img {
-    height: 240px;
-    background-size: cover;
-    background-position: center;
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
 }
 .portfolio-info {
     padding: 20px;
@@ -453,7 +458,13 @@ body {
     .header-nav ul { flex-direction: column; gap: 15px; align-items: center; }
     .hero-flex { flex-direction: column; text-align: center; }
     .hero-btns { flex-direction: column; align-items: center; }
-    .services-grid, .portfolio-grid, .adv-grid, .steps-grid { grid-template-columns: 1fr; }
+   .services-grid, .adv-grid, .steps-grid { 
+    grid-template-columns: 1fr; 
+}
+
+.portfolio-grid {
+    column-count: 1;
+}
     .contact-grid { grid-template-columns: 1fr; }
     .hero-slider, .slider { width: 100%; height: 300px; }
 }
@@ -534,38 +545,83 @@ body {
     
     <div class="portfolio-tabs">
         <button class="tab-btn active" data-filter="all">Все проекты</button>
-        <button class="tab-btn" data-filter="outdoor">Конструкции и Вывески</button>
-        <button class="tab-btn" data-filter="print">Печать и Резка</button>
+        <button class="tab-btn" data-filter="outdoor">вывески и декор</button>
+        <button class="tab-btn" data-filter="print">Печать и готовые наборы</button>
+        <button class="tab-btn active" data-filter="al">наши клиенты</button>
     </div>
 
     <div class="portfolio-grid">
-        <div class="portfolio-item" data-category="outdoor">
+        <div class="portfolio-item" data-category="al">
             <div class="portfolio-img" style="background-image: url('img/work3.jpeg')"></div>
             <div class="portfolio-info">
-                <h4>Световые объемные буквы</h4>
-                <p>Наружная реклама</p>
+                <h4>компании которые сотрудничают с нами</h4>
+                <p>реклама</p>
             </div>
         </div>
         <div class="portfolio-item" data-category="print">
             <div class="portfolio-img" style="background-image: url('img/work4.jpeg')"></div>
             <div class="portfolio-info">
-                <h4>Печать фирменных флагов</h4>
+                <h4>Печать фирменных лого</h4>
                 <p>Сублимационная печать</p>
             </div>
         </div>
-        <div class="portfolio-item" data-category="outdoor">
+        <div class="portfolio-item" data-category="print">
             <div class="portfolio-img" style="background-image: url('img/work5.jpeg')"></div>
             <div class="portfolio-info">
-                <h4>Композитный короб для ТРЦ</h4>
-                <p>Фрезерная резка и сборка</p>
+                <h4>подарочные наборы с фирменной печатью</h4>
+                <p>готовые бокы</p>
             </div>
         </div>
-        <div class="portfolio-item" data-category="print">
+        <div class="portfolio-item" data-category="outdoor">
             <div class="portfolio-img" style="background-image: url('img/work6.jpeg')"></div>
             <div class="portfolio-info">
-                <h4>Брендирование витрин винилом</h4>
-                <p>Плоттерная резка пленки</p>
+                <h4>изготовление фирменных визиток</h4>
+                <p>визитки и карточки</p>
             </div>
+        </div>
+        <div class="portfolio-item" data-category="outdoor">
+            <div class="portfolio-img" style="background-image: url('img/work9.jpeg')"></div>
+            <div class="portfolio-info">
+                <h4>изготовление фирменных QR карточек</h4>
+                <p>визитки и карточки</p>
+             </div>
+        </div>
+        <div class="portfolio-item" data-category="outdoor">
+            <div class="portfolio-img" style="background-image: url('img/work13.jpeg')"></div>
+            <div class="portfolio-info">
+                <h4>изготовление рамок и вывесок под заказ </h4>
+                <p>вывески и декоративные рамки</p>
+             </div>
+        </div>
+        <div class="portfolio-item" data-category="al">
+            <div class="portfolio-img" style="background-image: url('img/work14.jpeg')"></div>
+            <div class="portfolio-info">
+                <p>наши клиенты</p>
+             </div>
+        </div>
+        <div class="portfolio-item" data-category="al">
+            <div class="portfolio-img" style="background-image: url('img/work16.jpeg')"></div>
+            <div class="portfolio-info">
+                <p>наши клиенты</p>
+             </div>
+        </div>
+        <div class="portfolio-item" data-category="al">
+            <div class="portfolio-img" style="background-image: url('img/work17.jpeg')"></div>
+            <div class="portfolio-info">
+                <p>наши клиенты</p>
+             </div>
+        </div>
+        <div class="portfolio-item" data-category="al">
+            <div class="portfolio-img" style="background-image: url('img/work18.jpeg')"></div>
+            <div class="portfolio-info">
+                <p>наши клиенты</p>
+             </div>
+        </div>
+        <div class="portfolio-item" data-category="al">
+            <div class="portfolio-img" style="background-image: url('img/work19.jpeg')"></div>
+            <div class="portfolio-info">
+                <p>наши клиенты</p>
+             </div>
         </div>
     </div>
 </div>
